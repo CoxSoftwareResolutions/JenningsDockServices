@@ -1,17 +1,31 @@
 ---
-
+import homeData from '../content/pages/home.json';
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{homeData.title}</title>
+  </head>
+  <body>
+    <main style="max-width: 800px; margin: 0 auto; padding: 2rem; font-family: sans-serif;">
+      <h1>{homeData.title}</h1>
+      <p><em>{homeData.tagline}</em></p>
+      <hr />
+      
+      <h2>About Us</h2>
+      <p>{homeData.about}</p>
+
+      <h2>Gallery</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+        {homeData.gallery.map((item) => (
+          <figure style="margin: 0;">
+            <img src={item.image} alt={item.caption} style="width: 100%; border-radius: 8px;" />
+            <figcaption style="font-size: 0.85rem; color: #555;">{item.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </main>
+  </body>
 </html>

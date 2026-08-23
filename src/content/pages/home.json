@@ -1,0 +1,11 @@
+{
+  "title": "Acme Landscaping",
+  "tagline": "Quality lawn care since 2012.",
+  "about": "Locally owned and operated full-service lawn and garden care.",
+  "gallery": [
+    {
+      "image": "/uploads/lawn1.jpg",
+      "caption": "Backyard patio build"
+    }
+  ]
+}
