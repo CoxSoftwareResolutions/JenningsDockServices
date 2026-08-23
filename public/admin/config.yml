@@ -1,0 +1,26 @@
+backend:
+  name: github
+  repo: westoncox04-hub/JenningsDockServices
+  branch: main
+
+# Media settings
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "homepage"
+    label: "Homepage Content"
+    files:
+      - label: "Landing Page"
+        name: "landing"
+        file: "src/content/pages/home.json"
+        fields:
+          - { label: "Business Name", name: "title", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "About Us Text", name: "about", widget: "text" }
+          - label: "Photo Gallery"
+            name: "gallery"
+            widget: "list"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Caption", name: "caption", widget: "string" }
