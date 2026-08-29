@@ -14,6 +14,203 @@ collections:
         name: "home_page"
         file: "src/data/content.json"
         fields:
+          - label: "Site Copy & Navigation"
+            name: "site"
+            widget: "object"
+            fields:
+              - {
+                  label: "Page Title Suffix",
+                  name: "pageTitleSuffix",
+                  widget: "string",
+                }
+              - {
+                  label: "Page Description",
+                  name: "pageDescription",
+                  widget: "text",
+                }
+              - {
+                  label: "Social Sharing Image",
+                  name: "socialImage",
+                  widget: "image",
+                  required: false,
+                }
+              - { label: "Brand Name", name: "brandName", widget: "string" }
+              - { label: "Brand Subtitle", name: "brandSub", widget: "string" }
+              - {
+                  label: "Mobile Call Button",
+                  name: "headerCtaShort",
+                  widget: "string",
+                }
+              - label: "Navigation Links"
+                name: "navLinks"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Link", name: "href", widget: "string" }
+              - {
+                  label: "About Eyebrow",
+                  name: "aboutEyebrow",
+                  widget: "string",
+                }
+              - { label: "Hero Eyebrow", name: "heroEyebrow", widget: "string" }
+              - {
+                  label: "Services Eyebrow",
+                  name: "servicesEyebrow",
+                  widget: "string",
+                }
+              - {
+                  label: "Services Title",
+                  name: "servicesTitle",
+                  widget: "string",
+                }
+              - {
+                  label: "Services Subtitle",
+                  name: "servicesSubtitle",
+                  widget: "text",
+                }
+              - {
+                  label: "Gallery Eyebrow",
+                  name: "galleryEyebrow",
+                  widget: "string",
+                }
+              - {
+                  label: "Gallery Title",
+                  name: "galleryTitle",
+                  widget: "string",
+                }
+              - {
+                  label: "Gallery Subtitle",
+                  name: "gallerySubtitle",
+                  widget: "text",
+                }
+              - {
+                  label: "Empty Gallery Message",
+                  name: "galleryEmpty",
+                  widget: "text",
+                }
+              - {
+                  label: "Boat Lifts Eyebrow",
+                  name: "boatLiftsEyebrow",
+                  widget: "string",
+                }
+              - {
+                  label: "Boat Length Label",
+                  name: "boatLengthLabel",
+                  widget: "string",
+                }
+              - {
+                  label: "Water Depth Label",
+                  name: "waterDepthLabel",
+                  widget: "string",
+                }
+              - {
+                  label: "Standard Frame Label",
+                  name: "standardFrameLabel",
+                  widget: "string",
+                }
+              - {
+                  label: "Lift Inquiry Button",
+                  name: "liftCta",
+                  widget: "string",
+                }
+              - {
+                  label: "Contact Eyebrow",
+                  name: "contactEyebrow",
+                  widget: "string",
+                }
+              - {
+                  label: "Contact Title",
+                  name: "contactTitle",
+                  widget: "string",
+                }
+              - {
+                  label: "Contact Subtitle",
+                  name: "contactSubtitle",
+                  widget: "text",
+                }
+              - {
+                  label: "Call Button Prefix",
+                  name: "callButtonPrefix",
+                  widget: "string",
+                }
+              - { label: "Email Button", name: "emailButton", widget: "string" }
+              - { label: "Hours Label", name: "hoursLabel", widget: "string" }
+              - {
+                  label: "Service Area Label",
+                  name: "serviceAreaLabel",
+                  widget: "string",
+                }
+              - {
+                  label: "Address Label",
+                  name: "addressLabel",
+                  widget: "string",
+                }
+              - {
+                  label: "Footer Tagline",
+                  name: "footerTagline",
+                  widget: "text",
+                }
+              - {
+                  label: "Footer Contact Heading",
+                  name: "footerContactTitle",
+                  widget: "string",
+                }
+              - {
+                  label: "Footer Hours Heading",
+                  name: "footerHoursTitle",
+                  widget: "string",
+                }
+              - {
+                  label: "Footer Site Heading",
+                  name: "footerSiteTitle",
+                  widget: "string",
+                }
+              - {
+                  label: "Footer Services Link",
+                  name: "footerServicesLink",
+                  widget: "string",
+                }
+              - {
+                  label: "Footer Boat Lifts Link",
+                  name: "footerBoatLiftsLink",
+                  widget: "string",
+                }
+              - {
+                  label: "Footer Contact Link",
+                  name: "footerContactLink",
+                  widget: "string",
+                }
+              - {
+                  label: "Staff Login Label",
+                  name: "staffLogin",
+                  widget: "string",
+                }
+              - {
+                  label: "Structured Data Description",
+                  name: "structuredDataDescription",
+                  widget: "text",
+                }
+              - {
+                  label: "Thank-you Eyebrow",
+                  name: "thanksEyebrow",
+                  widget: "string",
+                }
+              - {
+                  label: "Thank-you Title",
+                  name: "thanksTitle",
+                  widget: "string",
+                }
+              - {
+                  label: "Thank-you Subtitle",
+                  name: "thanksSubtitle",
+                  widget: "text",
+                }
+              - {
+                  label: "Back Home Button",
+                  name: "backHome",
+                  widget: "string",
+                }
+
           - label: "Business Contact Details"
             name: "business"
             widget: "object"

@@ -1,7 +1,7 @@
 ---
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
-import { business, telHref } from "../data/content";
+import { business, site, telHref } from "../data/content";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -12,15 +12,14 @@ import Layout from "../layouts/Layout.astro";
   <Header />
   <main id="main" class="section thanks">
     <div class="container thanks__inner">
-      <p class="eyebrow">Request Received</p>
-      <h1>Thanks &mdash; we got your message.</h1>
+      <p class="eyebrow">{site.thanksEyebrow}</p>
+      <h1>{site.thanksTitle}</h1>
       <p class="section-subtitle">
-        An employee will follow up during business hours ({business.hours}). If
-        it is urgent, give us a call directly.
+        {site.thanksSubtitle} ({business.hours})
       </p>
       <div class="thanks__actions">
         <a class="btn btn--primary" href={telHref}>Call {business.phone}</a>
-        <a class="btn btn--ghost" href="/">Back to Home</a>
+        <a class="btn btn--ghost" href="/">{site.backHome}</a>
       </div>
     </div>
   </main>

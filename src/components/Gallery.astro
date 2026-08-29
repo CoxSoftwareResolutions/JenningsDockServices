@@ -1,15 +1,13 @@
 ---
-import { gallery } from '../data/content';
+import { gallery, site } from "../data/content";
 ---
 
 <section class="section" id="gallery">
   <div class="container">
     <div class="section-header section-header--center">
-      <p class="eyebrow">Our Work</p>
-      <h2>Project Gallery</h2>
-      <p class="section-subtitle">
-        A look at recent dock builds, lift installations, and waterfront repairs.
-      </p>
+      <p class="eyebrow">{site.galleryEyebrow}</p>
+      <h2>{site.galleryTitle}</h2>
+      <p class="section-subtitle">{site.gallerySubtitle}</p>
     </div>
 
     {
@@ -25,16 +23,19 @@ import { gallery } from '../data/content';
                 data-src={item.image}
                 data-caption={item.caption}
               >
-                <img src={item.image} alt={item.caption} loading="lazy" decoding="async" />
+                <img
+                  src={item.image}
+                  alt={item.caption}
+                  loading="lazy"
+                  decoding="async"
+                />
                 <span class="gallery-item__caption">{item.caption}</span>
               </button>
             </li>
           ))}
         </ul>
       ) : (
-        <p class="gallery-empty">
-          Project photos are coming soon. Call us and we will gladly share recent work.
-        </p>
+        <p class="gallery-empty">{site.galleryEmpty}</p>
       )
     }
   </div>
@@ -42,18 +43,40 @@ import { gallery } from '../data/content';
 
 {
   gallery.length > 0 && (
-    <div class="lightbox" data-lightbox hidden role="dialog" aria-modal="true" aria-label="Image viewer">
-      <button class="lightbox__close" type="button" data-lightbox-close aria-label="Close image viewer">
+    <div
+      class="lightbox"
+      data-lightbox
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-label="Image viewer"
+    >
+      <button
+        class="lightbox__close"
+        type="button"
+        data-lightbox-close
+        aria-label="Close image viewer"
+      >
         &times;
       </button>
-      <button class="lightbox__nav lightbox__nav--prev" type="button" data-lightbox-prev aria-label="Previous image">
+      <button
+        class="lightbox__nav lightbox__nav--prev"
+        type="button"
+        data-lightbox-prev
+        aria-label="Previous image"
+      >
         &#8249;
       </button>
       <figure class="lightbox__figure">
         <img class="lightbox__image" data-lightbox-image src="" alt="" />
         <figcaption class="lightbox__caption" data-lightbox-caption />
       </figure>
-      <button class="lightbox__nav lightbox__nav--next" type="button" data-lightbox-next aria-label="Next image">
+      <button
+        class="lightbox__nav lightbox__nav--next"
+        type="button"
+        data-lightbox-next
+        aria-label="Next image"
+      >
         &#8250;
       </button>
     </div>
@@ -79,7 +102,9 @@ import { gallery } from '../data/content';
     text-align: left;
     font: inherit;
     color: inherit;
-    transition: transform var(--transition), box-shadow var(--transition);
+    transition:
+      transform var(--transition),
+      box-shadow var(--transition);
   }
 
   .gallery-item__button:hover {
@@ -195,17 +220,27 @@ import { gallery } from '../data/content';
 </style>
 
 <script>
-  const lightbox = document.querySelector<HTMLElement>('[data-lightbox]');
+  const lightbox = document.querySelector<HTMLElement>("[data-lightbox]");
   const triggers = Array.from(
-    document.querySelectorAll<HTMLButtonElement>('[data-lightbox-trigger]')
+    document.querySelectorAll<HTMLButtonElement>("[data-lightbox-trigger]"),
   );
 
   if (lightbox && triggers.length > 0) {
-    const image = lightbox.querySelector<HTMLImageElement>('[data-lightbox-image]')!;
-    const caption = lightbox.querySelector<HTMLElement>('[data-lightbox-caption]')!;
-    const closeButton = lightbox.querySelector<HTMLButtonElement>('[data-lightbox-close]')!;
-    const prevButton = lightbox.querySelector<HTMLButtonElement>('[data-lightbox-prev]')!;
-    const nextButton = lightbox.querySelector<HTMLButtonElement>('[data-lightbox-next]')!;
+    const image = lightbox.querySelector<HTMLImageElement>(
+      "[data-lightbox-image]",
+    )!;
+    const caption = lightbox.querySelector<HTMLElement>(
+      "[data-lightbox-caption]",
+    )!;
+    const closeButton = lightbox.querySelector<HTMLButtonElement>(
+      "[data-lightbox-close]",
+    )!;
+    const prevButton = lightbox.querySelector<HTMLButtonElement>(
+      "[data-lightbox-prev]",
+    )!;
+    const nextButton = lightbox.querySelector<HTMLButtonElement>(
+      "[data-lightbox-next]",
+    )!;
 
     let currentIndex = 0;
     let lastFocused: HTMLElement | null = null;
@@ -214,44 +249,45 @@ import { gallery } from '../data/content';
       const trigger = triggers[index];
       if (!trigger) return;
       currentIndex = index;
-      image.src = trigger.dataset.src ?? '';
-      image.alt = trigger.dataset.caption ?? '';
-      caption.textContent = trigger.dataset.caption ?? '';
+      image.src = trigger.dataset.src ?? "";
+      image.alt = trigger.dataset.caption ?? "";
+      caption.textContent = trigger.dataset.caption ?? "";
     };
 
     const open = (index: number) => {
       lastFocused = document.activeElement as HTMLElement | null;
       render(index);
       lightbox.hidden = false;
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
       closeButton.focus();
     };
 
     const close = () => {
       lightbox.hidden = true;
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
       lastFocused?.focus();
     };
 
-    const step = (delta: number) => render((currentIndex + delta + triggers.length) % triggers.length);
+    const step = (delta: number) =>
+      render((currentIndex + delta + triggers.length) % triggers.length);
 
     triggers.forEach((trigger, index) => {
-      trigger.addEventListener('click', () => open(index));
+      trigger.addEventListener("click", () => open(index));
     });
 
-    closeButton.addEventListener('click', close);
-    prevButton.addEventListener('click', () => step(-1));
-    nextButton.addEventListener('click', () => step(1));
+    closeButton.addEventListener("click", close);
+    prevButton.addEventListener("click", () => step(-1));
+    nextButton.addEventListener("click", () => step(1));
 
-    lightbox.addEventListener('click', (event) => {
+    lightbox.addEventListener("click", (event) => {
       if (event.target === lightbox) close();
     });
 
-    document.addEventListener('keydown', (event) => {
+    document.addEventListener("keydown", (event) => {
       if (lightbox.hidden) return;
-      if (event.key === 'Escape') close();
-      if (event.key === 'ArrowLeft') step(-1);
-      if (event.key === 'ArrowRight') step(1);
+      if (event.key === "Escape") close();
+      if (event.key === "ArrowLeft") step(-1);
+      if (event.key === "ArrowRight") step(1);
     });
   }
 </script>

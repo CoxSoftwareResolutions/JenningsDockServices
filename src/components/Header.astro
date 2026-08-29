@@ -1,26 +1,18 @@
 ---
-import { business, telHref } from "../data/content";
-
-const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#services", label: "Services" },
-  { href: "#gallery", label: "Gallery" },
-  { href: "#boat-lifts", label: "Boat Lifts" },
-  { href: "#contact", label: "Contact" },
-];
+import { business, site, telHref } from "../data/content";
 ---
 
 <header class="header">
   <div class="container header__inner">
     <a class="brand" href="#top">
-      <span class="brand__name">Jennings</span>
-      <span class="brand__sub">Dock Services</span>
+      <span class="brand__name">{site.brandName}</span>
+      <span class="brand__sub">{site.brandSub}</span>
     </a>
 
     <nav class="nav" aria-label="Primary">
       <ul class="nav__list">
         {
-          navLinks.map((link) => (
+          site.navLinks.map((link) => (
             <li>
               <a class="nav__link" href={link.href}>
                 {link.label}
@@ -33,7 +25,7 @@ const navLinks = [
 
     <a class="btn btn--primary header__cta" href={telHref}>
       <span class="header__cta-text">{business.phone}</span>
-      <span class="header__cta-short">Call Now</span>
+      <span class="header__cta-short">{site.headerCtaShort}</span>
     </a>
   </div>
 </header>

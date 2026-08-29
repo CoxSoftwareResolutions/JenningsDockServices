@@ -1,6 +1,6 @@
 ---
-import { business, fullAddress } from '../data/content';
-import '../styles/global.css';
+import { business, fullAddress, site } from "../data/content";
+import "../styles/global.css";
 
 interface Props {
   title: string;
@@ -11,28 +11,27 @@ interface Props {
 const { title, description, ogImage } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const socialImage = new URL(ogImage ?? '/og-image.jpg', Astro.site);
+const socialImage = new URL(ogImage ?? site.socialImage, Astro.site);
 
 const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'HomeAndConstructionBusiness',
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
   name: business.name,
-  description:
-    'Galvanized steel boat docks, boat lifts and lift repair, wood and steel dock repair, scuba diving, anchor and cable work.',
+  description: site.structuredDataDescription,
   url: Astro.site?.href,
   telephone: business.phone,
   email: business.email,
   address: {
-    '@type': 'PostalAddress',
+    "@type": "PostalAddress",
     streetAddress: business.address.street,
     addressLocality: business.address.city,
     addressRegion: business.address.state,
     postalCode: business.address.zip,
-    addressCountry: 'US',
+    addressCountry: "US",
   },
   areaServed: business.location,
-  openingHours: 'Mo-Fr 07:30-15:30',
-  priceRange: '$$',
+  openingHours: "Mo-Fr 07:30-15:30",
+  priceRange: "$$",
 };
 ---
 
@@ -70,15 +69,21 @@ const schema = {
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap"
     />
 
-    <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(schema)}
+      is:inline
+    />
 
-    <script is:inline src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script
+      is:inline
+      src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script is:inline>
       if (window.netlifyIdentity) {
-        window.netlifyIdentity.on('init', (user) => {
+        window.netlifyIdentity.on("init", (user) => {
           if (!user) {
-            window.netlifyIdentity.on('login', () => {
-              document.location.href = '/admin/';
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
             });
           }
         });

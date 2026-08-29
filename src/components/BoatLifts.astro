@@ -1,13 +1,14 @@
 ---
-import { boatLifts, telHref } from '../data/content';
+import { boatLifts, site, telHref } from "../data/content";
 
-const isBlank = (value: string) => !value || value.trim() === '' || value.trim() === '—';
+const isBlank = (value: string) =>
+  !value || value.trim() === "" || value.trim() === "—";
 ---
 
 <section class="section section--muted" id="boat-lifts">
   <div class="container">
     <div class="section-header section-header--center">
-      <p class="eyebrow">Boat Lifts</p>
+      <p class="eyebrow">{site.boatLiftsEyebrow}</p>
       <h2>{boatLifts.sectionTitle}</h2>
       <p class="section-subtitle">{boatLifts.sectionSubtitle}</p>
     </div>
@@ -25,22 +26,22 @@ const isBlank = (value: string) => !value || value.trim() === '' || value.trim()
                 </div>
                 <dl class="lift-card__specs">
                   <div class="spec">
-                    <dt>Boat Length</dt>
+                    <dt>{site.boatLengthLabel}</dt>
                     <dd>{model.boatLength}</dd>
                   </div>
                   <div class="spec">
-                    <dt>Min Water Depth</dt>
+                    <dt>{site.waterDepthLabel}</dt>
                     <dd>{model.waterDepth}</dd>
                   </div>
                   {!isBlank(model.standardFrame) && (
                     <div class="spec">
-                      <dt>Standard Frame</dt>
+                      <dt>{site.standardFrameLabel}</dt>
                       <dd>{model.standardFrame}</dd>
                     </div>
                   )}
                 </dl>
                 <a class="lift-cta" href={telHref}>
-                  Inquire About This Model
+                  {site.liftCta}
                   <span aria-hidden="true">&rarr;</span>
                   <span class="visually-hidden">({model.modelNumber})</span>
                 </a>
@@ -81,7 +82,9 @@ const isBlank = (value: string) => !value || value.trim() === '' || value.trim()
     border: 1px solid var(--color-accent-subtle);
     border-radius: var(--radius);
     padding: 1.5rem;
-    transition: border-color var(--transition), box-shadow var(--transition);
+    transition:
+      border-color var(--transition),
+      box-shadow var(--transition);
   }
 
   .lift-card:hover {

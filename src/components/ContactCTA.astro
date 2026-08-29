@@ -1,170 +1,83 @@
 ---
-import { business, fullAddress, mailHref, telHref } from '../data/content';
+import {
+  business,
+  fullAddress,
+  mailHref,
+  site,
+  telHref,
+} from "../data/content";
 ---
 
 <section class="section section--dark" id="contact">
   <div class="container contact">
     <div class="contact__intro">
-      <p class="eyebrow">Get Started</p>
-      <h2>Ready for a Free On-Site Evaluation?</h2>
-      <p class="section-subtitle">
-        Tell us about your dock or lift and we will schedule a visit, assess the work, and give you
-        a straightforward estimate.
-      </p>
+      <p class="eyebrow">{site.contactEyebrow}</p>
+      <h2>{site.contactTitle}</h2>
+      <p class="section-subtitle">{site.contactSubtitle}</p>
 
       <div class="contact__actions">
-        <a class="btn btn--primary" href={telHref}>Call {business.phone}</a>
-        <a class="btn btn--outline" href={mailHref}>Email Us</a>
+        <a class="btn btn--primary" href={telHref}
+          >{site.callButtonPrefix} {business.phone}</a
+        >
+        <a class="btn btn--outline" href={mailHref}>{site.emailButton}</a>
       </div>
 
       <dl class="contact__details">
         <div>
-          <dt>Hours</dt>
+          <dt>{site.hoursLabel}</dt>
           <dd>{business.hours}</dd>
         </div>
         <div>
-          <dt>Service Area</dt>
+          <dt>{site.serviceAreaLabel}</dt>
           <dd>{business.location}</dd>
         </div>
         <div>
-          <dt>Shop Address</dt>
+          <dt>{site.addressLabel}</dt>
           <dd>{fullAddress}</dd>
         </div>
       </dl>
     </div>
 
-    <form
-      class="contact-form"
-      name="estimate-request"
-      method="POST"
-      action="/thanks/"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
-    >
-      <input type="hidden" name="form-name" value="estimate-request" />
-      <p class="hidden-field">
-        <label>Do not fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
-      </p>
+    <style>
+      .contact__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+        margin: 2rem 0;
+      }
 
-      <h3 class="contact-form__title">Request an Estimate</h3>
+      .contact__details {
+        display: grid;
+        gap: 1.1rem;
+        margin: 0;
+        padding-top: 1.75rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+      }
 
-      <div class="field">
-        <label for="name">Name</label>
-        <input id="name" name="name" type="text" autocomplete="name" required />
-      </div>
+      .contact__details dt {
+        font-family: var(--font-heading);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--color-accent-subtle);
+        margin-bottom: 0.15rem;
+      }
 
-      <div class="field">
-        <label for="phone">Phone</label>
-        <input id="phone" name="phone" type="tel" autocomplete="tel" required />
-      </div>
+      .contact__details dd {
+        margin: 0;
+        font-size: 0.98rem;
+      }
 
-      <div class="field">
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" autocomplete="email" />
-      </div>
+      .hidden-field {
+        display: none;
+      }
 
-      <div class="field">
-        <label for="message">How can we help?</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
-      </div>
-
-      <button class="btn btn--primary btn--block" type="submit">Send Request</button>
-    </form>
+      @media (max-width: 860px) {
+        .contact {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </div>
 </section>
-
-<style>
-  .contact {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: clamp(2rem, 5vw, 4rem);
-    align-items: start;
-  }
-
-  .contact__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.9rem;
-    margin: 2rem 0;
-  }
-
-  .contact__details {
-    display: grid;
-    gap: 1.1rem;
-    margin: 0;
-    padding-top: 1.75rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.18);
-  }
-
-  .contact__details dt {
-    font-family: var(--font-heading);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--color-accent-subtle);
-    margin-bottom: 0.15rem;
-  }
-
-  .contact__details dd {
-    margin: 0;
-    font-size: 0.98rem;
-  }
-
-  .contact-form {
-    background-color: var(--color-white);
-    border-radius: var(--radius);
-    padding: clamp(1.5rem, 3vw, 2rem);
-    color: var(--color-primary);
-  }
-
-  .contact-form__title {
-    margin-bottom: 1.25rem;
-  }
-
-  .field {
-    margin-bottom: 1rem;
-  }
-
-  .field label {
-    display: block;
-    font-size: 0.82rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--color-secondary);
-    margin-bottom: 0.35rem;
-  }
-
-  .field input,
-  .field textarea {
-    width: 100%;
-    font-family: var(--font-body);
-    font-size: 1rem;
-    color: var(--color-primary);
-    background-color: var(--color-canvas);
-    border: 1px solid var(--color-accent-subtle);
-    border-radius: var(--radius);
-    padding: 0.7rem 0.85rem;
-    transition: border-color var(--transition);
-  }
-
-  .field input:focus,
-  .field textarea:focus {
-    border-color: var(--color-secondary);
-  }
-
-  .field textarea {
-    resize: vertical;
-  }
-
-  .hidden-field {
-    display: none;
-  }
-
-  @media (max-width: 860px) {
-    .contact {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>

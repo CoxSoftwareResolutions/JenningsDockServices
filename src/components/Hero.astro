@@ -1,21 +1,28 @@
 ---
-import { business, hero, mailHref, telHref } from '../data/content';
+import { business, hero, mailHref, site, telHref } from "../data/content";
 
 // Escape characters that could break out of the CSS url() literal.
 const safeBgImage = hero.bgImage.replace(/["')\\]/g, encodeURIComponent);
-const bgStyle = hero.bgImage ? `background-image: url("${safeBgImage}")` : undefined;
+const bgStyle = hero.bgImage
+  ? `background-image: url("${safeBgImage}")`
+  : undefined;
 ---
 
-<section class="hero" id="top" data-has-image={hero.bgImage ? 'true' : 'false'} style={bgStyle}>
+<section
+  class="hero"
+  id="top"
+  data-has-image={hero.bgImage ? "true" : "false"}
+  style={bgStyle}
+>
   <div class="hero__overlay"></div>
   <div class="container hero__inner">
-    <p class="hero__eyebrow">Family Owned &middot; 25+ Years on the Water</p>
+    <p class="hero__eyebrow">{site.heroEyebrow}</p>
     <h1 class="hero__headline">{hero.headline}</h1>
     <p class="hero__subheadline">{hero.subheadline}</p>
 
     <div class="hero__actions">
       <a class="btn btn--primary" href={telHref}>{hero.ctaText}</a>
-      <a class="btn btn--outline" href={mailHref}>Email Us</a>
+      <a class="btn btn--outline" href={mailHref}>{site.emailButton}</a>
     </div>
 
     <ul class="hero__meta">
@@ -49,8 +56,9 @@ const bgStyle = hero.bgImage ? `background-image: url("${safeBgImage}")` : undef
     );
   }
 
-  .hero[data-has-image='false'] .hero__overlay {
-    background: radial-gradient(
+  .hero[data-has-image="false"] .hero__overlay {
+    background:
+      radial-gradient(
         120% 100% at 15% 0%,
         rgba(59, 88, 76, 0.55) 0%,
         rgba(26, 51, 62, 0) 60%
@@ -120,7 +128,7 @@ const bgStyle = hero.bgImage ? `background-image: url("${safeBgImage}")` : undef
   }
 
   .hero__meta li::before {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     top: 0.55em;
