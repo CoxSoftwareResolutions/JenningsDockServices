@@ -1,12 +1,12 @@
 ---
-import { business, telHref } from '../data/content';
+import { business, telHref } from "../data/content";
 
 const navLinks = [
-  { href: '#about', label: 'About' },
-  { href: '#services', label: 'Services' },
-  { href: '#gallery', label: 'Gallery' },
-  { href: '#boat-lifts', label: 'Boat Lifts' },
-  { href: '#contact', label: 'Contact' },
+  { href: "#about", label: "About" },
+  { href: "#services", label: "Services" },
+  { href: "#gallery", label: "Gallery" },
+  { href: "#boat-lifts", label: "Boat Lifts" },
+  { href: "#contact", label: "Contact" },
 ];
 ---
 
@@ -32,7 +32,6 @@ const navLinks = [
     </nav>
 
     <a class="btn btn--primary header__cta" href={telHref}>
-      <span aria-hidden="true">&#9742;</span>
       <span class="header__cta-text">{business.phone}</span>
       <span class="header__cta-short">Call Now</span>
     </a>
@@ -94,7 +93,7 @@ const navLinks = [
   }
 
   .nav__link::after {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     bottom: -4px;
