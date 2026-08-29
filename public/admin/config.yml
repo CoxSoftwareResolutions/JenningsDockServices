@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: westoncox04-hub/JenningsDockServices
+  name: git-gateway
   branch: main
 
 # Media settings
@@ -8,19 +7,126 @@ media_folder: "public/uploads"
 public_folder: "/uploads"
 
 collections:
-  - name: "homepage"
-    label: "Homepage Content"
+  - name: "site_content"
+    label: "Website Content"
     files:
-      - label: "Landing Page"
-        name: "landing"
-        file: "src/content/pages/home.json"
+      - label: "Home Page Content"
+        name: "home_page"
+        file: "src/data/content.json"
         fields:
-          - { label: "Business Name", name: "title", widget: "string" }
-          - { label: "Tagline", name: "tagline", widget: "string" }
-          - { label: "About Us Text", name: "about", widget: "text" }
+          - label: "Business Contact Details"
+            name: "business"
+            widget: "object"
+            fields:
+              - { label: "Business Name", name: "name", widget: "string" }
+              - { label: "Phone Number", name: "phone", widget: "string" }
+              - { label: "Email Address", name: "email", widget: "string" }
+              - label: "Address"
+                name: "address"
+                widget: "object"
+                fields:
+                  - { label: "Street", name: "street", widget: "string" }
+                  - { label: "City", name: "city", widget: "string" }
+                  - { label: "State", name: "state", widget: "string" }
+                  - { label: "ZIP Code", name: "zip", widget: "string" }
+              - { label: "Service Area", name: "location", widget: "string" }
+              - { label: "Operating Hours", name: "hours", widget: "string" }
+
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Subheadline", name: "subheadline", widget: "text" }
+              - { label: "CTA Button Text", name: "ctaText", widget: "string" }
+              - {
+                  label: "Background Image",
+                  name: "bgImage",
+                  widget: "image",
+                  required: false,
+                }
+
+          - label: "About Section"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "About Paragraph", name: "paragraph", widget: "text" }
+              - label: "Highlights / Stats"
+                name: "stats"
+                widget: "list"
+                fields:
+                  - { label: "Value", name: "value", widget: "string" }
+                  - { label: "Label", name: "label", widget: "string" }
+
+          - label: "Services"
+            name: "services"
+            widget: "list"
+            fields:
+              - { label: "Service Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+          - label: "Boat Lift Options"
+            name: "boatLifts"
+            widget: "object"
+            fields:
+              - {
+                  label: "Section Title",
+                  name: "sectionTitle",
+                  widget: "string",
+                }
+              - {
+                  label: "Section Subtitle",
+                  name: "sectionSubtitle",
+                  widget: "text",
+                }
+              - label: "Lift Categories"
+                name: "categories"
+                widget: "list"
+                fields:
+                  - {
+                      label: "Category Name",
+                      name: "categoryName",
+                      widget: "string",
+                    }
+                  - label: "Models"
+                    name: "models"
+                    widget: "list"
+                    fields:
+                      - {
+                          label: "Model Number",
+                          name: "modelNumber",
+                          widget: "string",
+                        }
+                      - {
+                          label: "Lift Capacity",
+                          name: "capacity",
+                          widget: "string",
+                        }
+                      - {
+                          label: "Max Boat Length",
+                          name: "boatLength",
+                          widget: "string",
+                        }
+                      - {
+                          label: "Min Water Depth",
+                          name: "waterDepth",
+                          widget: "string",
+                        }
+                      - {
+                          label: "Standard Frame Length",
+                          name: "standardFrame",
+                          widget: "string",
+                        }
+
           - label: "Photo Gallery"
             name: "gallery"
             widget: "list"
+            required: false
             fields:
               - { label: "Image", name: "image", widget: "image" }
-              - { label: "Caption", name: "caption", widget: "string" }
+              - {
+                  label: "Caption / Description",
+                  name: "caption",
+                  widget: "string",
+                }

@@ -1,0 +1,159 @@
+{
+  "business": {
+    "name": "Jennings Dock Services",
+    "phone": "(870) 488-7327",
+    "email": "jenningsdockservice@gmail.com",
+    "address": {
+      "street": "14345 US-62",
+      "city": "Henderson",
+      "state": "AR",
+      "zip": "72544",
+      "link": "https://www.google.com/maps/place/Jennings+Dock+Services/@36.3833161,-92.1727078,17z/data=!3m1!4b1!4m6!3m5!1s0x87d1c77c7bcc7863:0x6d547eca299850a6!8m2!3d36.3833161!4d-92.1727078!16s%2Fg%2F11zf3p3yv0?entry=ttu&g_ep=EgoyMDI2MDgyNi4wIKXMDSoASAFQAw%3D%3D"
+    },
+    "location": "Twin Lakes & Surrounding Areas",
+    "hours": "Mon - Fri: 7:30 AM - 3:30 PM"
+  },
+  "hero": {
+    "headline": "Expert Dock & Boat Lift Services",
+    "subheadline": "Galvanized steel docks, lift repairs, scuba recovery, and waterfront maintenance backed by 25+ years of family-owned experience.",
+    "ctaText": "Call for an Estimate",
+    "bgImage": "/uploads/shop_front.webp"
+  },
+  "about": {
+    "title": "Built for Safety, Longevity, and Peace of Mind",
+    "paragraph": "Jennings Dock Services specializes in galvanized steel boat docks, professional boat lifts and lift repair, wood and steel dock repair, scuba diving, anchor & cable work. As a family-owned business with 25+ years of experience, we focus on durable, high-quality work that guarantees safety and longevity for your waterfront assets. Trust us for expert service in marine and dock projects.",
+    "stats": [
+      { "value": "25+", "label": "Years Experience" },
+      { "value": "100%", "label": "Family Owned" },
+      { "value": "Steel & Wood", "label": "Custom Builds & Repairs" }
+    ]
+  },
+  "services": [
+    {
+      "title": "Galvanized Steel Docks",
+      "description": "Custom fabrication, installation, and modification of heavy-duty galvanized steel dock frameworks designed to withstand lake currents and severe weather."
+    },
+    {
+      "title": "Boat Lifts & Lift Repair",
+      "description": "Installation, preventative servicing, cable replacements, and motor repairs for all major residential and commercial boat lift systems."
+    },
+    {
+      "title": "Dock Repair & Maintenance",
+      "description": "Comprehensive structural restoration for both wood and steel docks, including decking replacement, flotation repair, and hinge re-welding."
+    },
+    {
+      "title": "Anchor & Cable Work",
+      "description": "Heavy-duty anchoring, winch installations, cable tightening, and seasonal dock adjustments to keep your dock secure year-round."
+    },
+    {
+      "title": "Scuba Diving & Underwater Recovery",
+      "description": "Professional underwater inspections, submerged debris clearing, dropped item recovery, and underwater structural assessments."
+    }
+  ],
+  "boatLifts": {
+    "sectionTitle": "Boat Lift Models & Specifications",
+    "sectionSubtitle": "Heavy-duty, precision-engineered boat lifts built for lakefront performance. Explore our standard, pontoon, and PWC lift options below.",
+    "categories": [
+      {
+        "categoryName": "Standard Boat Lifts",
+        "models": [
+          {
+            "modelNumber": "BL-61",
+            "capacity": "2,500 LBS",
+            "boatLength": "Up to 17 FT",
+            "waterDepth": "5 FT",
+            "standardFrame": "16 FT"
+          },
+          {
+            "modelNumber": "BL-62",
+            "capacity": "4,500 LBS",
+            "boatLength": "Up to 21 FT",
+            "waterDepth": "6 FT",
+            "standardFrame": "20 FT"
+          },
+          {
+            "modelNumber": "BL-63",
+            "capacity": "6,000 LBS",
+            "boatLength": "Up to 25 FT",
+            "waterDepth": "7 FT",
+            "standardFrame": "24 FT"
+          }
+        ]
+      },
+      {
+        "categoryName": "Pontoon Lifts",
+        "models": [
+          {
+            "modelNumber": "PTL-62",
+            "capacity": "4,500 LBS",
+            "boatLength": "Up to 21 FT",
+            "waterDepth": "6 FT",
+            "standardFrame": "20 FT"
+          },
+          {
+            "modelNumber": "PTL-62EXT",
+            "capacity": "4,500 LBS",
+            "boatLength": "Up to 25 FT",
+            "waterDepth": "7 FT",
+            "standardFrame": "24 FT"
+          },
+          {
+            "modelNumber": "PTL-63",
+            "capacity": "6,000 LBS",
+            "boatLength": "Up to 25 FT",
+            "waterDepth": "7 FT",
+            "standardFrame": "24 FT"
+          },
+          {
+            "modelNumber": "PTL-63EXT",
+            "capacity": "6,000 LBS",
+            "boatLength": "Up to 30 FT",
+            "waterDepth": "8 FT",
+            "standardFrame": "29 FT"
+          }
+        ]
+      },
+      {
+        "categoryName": "Personal Watercraft Lifts",
+        "models": [
+          {
+            "modelNumber": "PWC-2 SIDE BY SIDE",
+            "capacity": "2,000 LBS",
+            "boatLength": "Up to 12 FT",
+            "waterDepth": "5 FT",
+            "standardFrame": "—"
+          },
+          {
+            "modelNumber": "PWC-2 END TO END",
+            "capacity": "2,500 LBS",
+            "boatLength": "Up to 12 FT",
+            "waterDepth": "6 FT",
+            "standardFrame": "—"
+          }
+        ]
+      }
+    ]
+  },
+  "gallery": [
+    {
+      "image": "/uploads/boat_lift.jpg",
+      "caption": "Boat Lifts"
+    },
+    {
+      "image": "/uploads/metal_boat_dock.jpg",
+      "caption": "Galvanized Steel Docks"
+    },
+    {
+      "image": "uploads/metal_dock_sections.jpg",
+      "caption": "Dock Sections"
+    },
+    {
+      "image": "uploads/metal_ramp.jpg",
+      "caption": "Galvanized Steel Boat Ramps"
+    },
+    {
+      "image": "uploads/walkway_repair.webp",
+      "caption": "Dock Repair"
+    }
+  ]
+}

@@ -1,31 +1,28 @@
 ---
-import homeData from '../content/pages/home.json';
+import About from '../components/About.astro';
+import BoatLifts from '../components/BoatLifts.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Footer from '../components/Footer.astro';
+import Gallery from '../components/Gallery.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Services from '../components/Services.astro';
+import { business } from '../data/content';
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{homeData.title}</title>
-  </head>
-  <body>
-    <main style="max-width: 800px; margin: 0 auto; padding: 2rem; font-family: sans-serif;">
-      <h1>{homeData.title}</h1>
-      <p><em>{homeData.tagline}</em></p>
-      <hr />
-      
-      <h2>About Us</h2>
-      <p>{homeData.about}</p>
-
-      <h2>Gallery</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-        {homeData.gallery.map((item) => (
-          <figure style="margin: 0;">
-            <img src={item.image} alt={item.caption} style="width: 100%; border-radius: 8px;" />
-            <figcaption style="font-size: 0.85rem; color: #555;">{item.caption}</figcaption>
-          </figure>
-        ))}
-      </div>
-    </main>
-  </body>
-</html>
+<Layout
+  title={`${business.name} | Boat Docks, Lifts & Marine Repair in ${business.address.city}, ${business.address.state}`}
+  description="Family-owned dock and boat lift specialists with 25+ years of experience. Galvanized steel docks, lift installation and repair, wood and steel dock repair, anchor and cable work, and scuba recovery."
+>
+  <Header />
+  <main id="main">
+    <Hero />
+    <About />
+    <Services />
+    <Gallery />
+    <BoatLifts />
+    <ContactCTA />
+  </main>
+  <Footer />
+</Layout>

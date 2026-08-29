@@ -1,0 +1,256 @@
+:root {
+  --color-canvas: #f6f9fa;
+  --color-primary: #1a333e;
+  --color-secondary: #3b584c;
+  --color-accent-subtle: #d4e3eb;
+  --color-cta: #9e6f4b;
+  --color-cta-hover: #845a3b;
+  --color-white: #ffffff;
+  --font-heading: "Montserrat", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --max-width: 1140px;
+  --radius: 8px;
+  --transition: 0.2s ease-in-out;
+  --header-height: 72px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-canvas);
+  color: var(--color-primary);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+}
+
+h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+}
+
+h3 {
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--color-cta);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--color-cta-hover);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-cta);
+  outline-offset: 3px;
+}
+
+/* Layout helpers */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.section {
+  padding-block: clamp(3rem, 7vw, 5.5rem);
+}
+
+.section--muted {
+  background-color: var(--color-white);
+}
+
+.section--dark {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.section--dark h2,
+.section--dark h3 {
+  color: var(--color-white);
+}
+
+.section-header {
+  max-width: 720px;
+  margin-bottom: 2.5rem;
+}
+
+.section-header--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section-subtitle {
+  color: color-mix(in srgb, var(--color-primary) 75%, transparent);
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.section--dark .section-subtitle {
+  color: var(--color-accent-subtle);
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.section--dark .eyebrow {
+  color: var(--color-accent-subtle);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 1000;
+  background: var(--color-cta);
+  color: var(--color-white);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius);
+  transition: top var(--transition);
+}
+
+.skip-link:focus {
+  top: 1rem;
+  color: var(--color-white);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.6rem;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-align: center;
+  transition:
+    background-color var(--transition),
+    color var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn--primary {
+  background-color: var(--color-cta);
+  border-color: var(--color-cta);
+  color: var(--color-white);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-cta-hover);
+  border-color: var(--color-cta-hover);
+  color: var(--color-white);
+}
+
+.btn--outline {
+  background-color: transparent;
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+
+.btn--outline:hover {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+}
+
+.btn--ghost {
+  background-color: transparent;
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+.btn--ghost:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+}
+
+.btn--block {
+  width: 100%;
+}

@@ -1,0 +1,153 @@
+---
+import { business, telHref } from '../data/content';
+
+const navLinks = [
+  { href: '#about', label: 'About' },
+  { href: '#services', label: 'Services' },
+  { href: '#gallery', label: 'Gallery' },
+  { href: '#boat-lifts', label: 'Boat Lifts' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+
+<header class="header">
+  <div class="container header__inner">
+    <a class="brand" href="#top">
+      <span class="brand__name">Jennings</span>
+      <span class="brand__sub">Dock Services</span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <ul class="nav__list">
+        {
+          navLinks.map((link) => (
+            <li>
+              <a class="nav__link" href={link.href}>
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <a class="btn btn--primary header__cta" href={telHref}>
+      <span aria-hidden="true">&#9742;</span>
+      <span class="header__cta-text">{business.phone}</span>
+      <span class="header__cta-short">Call Now</span>
+    </a>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: color-mix(in srgb, var(--color-white) 92%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-accent-subtle);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: var(--header-height);
+  }
+
+  .brand {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+  }
+
+  .brand__name {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .brand__sub {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+  }
+
+  .nav__list {
+    display: flex;
+    gap: 1.75rem;
+  }
+
+  .nav__link {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    position: relative;
+    white-space: nowrap;
+  }
+
+  .nav__link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-cta);
+    transition: width var(--transition);
+  }
+
+  .nav__link:hover::after {
+    width: 100%;
+  }
+
+  .header__cta {
+    padding: 0.65rem 1.15rem;
+    white-space: nowrap;
+  }
+
+  .header__cta-short {
+    display: none;
+  }
+
+  @media (max-width: 900px) {
+    .nav {
+      order: 3;
+      width: 100%;
+      overflow-x: auto;
+      border-top: 1px solid var(--color-accent-subtle);
+      scrollbar-width: none;
+    }
+
+    .nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav__list {
+      gap: 1.25rem;
+      padding-block: 0.65rem;
+    }
+
+    .header__inner {
+      flex-wrap: wrap;
+      padding-block: 0.75rem 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .header__cta-text {
+      display: none;
+    }
+
+    .header__cta-short {
+      display: inline;
+    }
+  }
+</style>

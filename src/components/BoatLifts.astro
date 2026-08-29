@@ -1,0 +1,162 @@
+---
+import { boatLifts, telHref } from '../data/content';
+
+const isBlank = (value: string) => !value || value.trim() === '' || value.trim() === '—';
+---
+
+<section class="section section--muted" id="boat-lifts">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <p class="eyebrow">Boat Lifts</p>
+      <h2>{boatLifts.sectionTitle}</h2>
+      <p class="section-subtitle">{boatLifts.sectionSubtitle}</p>
+    </div>
+
+    {
+      boatLifts.categories.map((category) => (
+        <div class="lift-category">
+          <h3 class="lift-category__name">{category.categoryName}</h3>
+          <ul class="lift-grid">
+            {category.models.map((model) => (
+              <li class="lift-card">
+                <div class="lift-card__head">
+                  <h4 class="lift-card__model">{model.modelNumber}</h4>
+                  <span class="lift-card__badge">{model.capacity}</span>
+                </div>
+                <dl class="lift-card__specs">
+                  <div class="spec">
+                    <dt>Boat Length</dt>
+                    <dd>{model.boatLength}</dd>
+                  </div>
+                  <div class="spec">
+                    <dt>Min Water Depth</dt>
+                    <dd>{model.waterDepth}</dd>
+                  </div>
+                  {!isBlank(model.standardFrame) && (
+                    <div class="spec">
+                      <dt>Standard Frame</dt>
+                      <dd>{model.standardFrame}</dd>
+                    </div>
+                  )}
+                </dl>
+                <a class="lift-cta" href={telHref}>
+                  Inquire About This Model
+                  <span aria-hidden="true">&rarr;</span>
+                  <span class="visually-hidden">({model.modelNumber})</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .lift-category + .lift-category {
+    margin-top: 3rem;
+  }
+
+  .lift-category__name {
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-secondary);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--color-accent-subtle);
+  }
+
+  .lift-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .lift-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-canvas);
+    border: 1px solid var(--color-accent-subtle);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    transition: border-color var(--transition), box-shadow var(--transition);
+  }
+
+  .lift-card:hover {
+    border-color: var(--color-secondary);
+    box-shadow: 0 10px 24px rgba(26, 51, 62, 0.08);
+  }
+
+  .lift-card__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.15rem;
+  }
+
+  .lift-card__model {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin: 0;
+  }
+
+  .lift-card__badge {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .lift-card__specs {
+    margin: 0 0 1.35rem;
+    flex: 1;
+  }
+
+  .spec {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 0.5rem;
+    border-bottom: 1px dashed var(--color-accent-subtle);
+    font-size: 0.9rem;
+  }
+
+  .spec dt {
+    color: color-mix(in srgb, var(--color-primary) 65%, transparent);
+  }
+
+  .spec dd {
+    margin: 0;
+    font-weight: 600;
+    text-align: right;
+  }
+
+  .lift-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-heading);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-cta);
+  }
+
+  .lift-cta:hover span[aria-hidden] {
+    transform: translateX(3px);
+  }
+
+  .lift-cta span[aria-hidden] {
+    display: inline-block;
+    transition: transform var(--transition);
+  }
+</style>

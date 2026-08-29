@@ -1,0 +1,71 @@
+---
+import { services } from '../data/content';
+---
+
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <p class="eyebrow">What We Do</p>
+      <h2>Complete Waterfront Services</h2>
+      <p class="section-subtitle">
+        From new galvanized steel builds to underwater recovery, we handle every part of keeping
+        your dock safe and functional.
+      </p>
+    </div>
+
+    <ul class="services">
+      {
+        services.map((service, index) => (
+          <li class="service-card">
+            <span class="service-card__index">{String(index + 1).padStart(2, '0')}</span>
+            <h3 class="service-card__title">{service.title}</h3>
+            <p class="service-card__text">{service.description}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-accent-subtle);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    transition: transform var(--transition), box-shadow var(--transition),
+      border-color var(--transition);
+  }
+
+  .service-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-secondary);
+    box-shadow: 0 12px 28px rgba(26, 51, 62, 0.09);
+  }
+
+  .service-card__index {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--color-cta);
+    margin-bottom: 0.85rem;
+  }
+
+  .service-card__title {
+    margin-bottom: 0.6rem;
+  }
+
+  .service-card__text {
+    margin: 0;
+    font-size: 0.95rem;
+    color: color-mix(in srgb, var(--color-primary) 78%, transparent);
+  }
+</style>

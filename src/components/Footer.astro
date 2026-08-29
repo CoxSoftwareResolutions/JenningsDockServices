@@ -1,0 +1,147 @@
+---
+import { business, fullAddress, mailHref, telHref } from "../data/content";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <p class="footer__name">{business.name}</p>
+      <p class="footer__tagline">
+        Galvanized steel docks, boat lifts, repairs, and scuba services. Family
+        owned for 25+ years.
+      </p>
+    </div>
+
+    <div class="footer__block">
+      <h2 class="footer__heading">Contact</h2>
+      <ul class="footer__list">
+        <li><a href={telHref}>{business.phone}</a></li>
+        <li><a href={mailHref}>{business.email}</a></li>
+        <li>
+          <u>
+            <a
+              href={`${business.address.link}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {fullAddress}
+            </a>
+          </u>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__block">
+      <h2 class="footer__heading">Hours &amp; Area</h2>
+      <ul class="footer__list">
+        <li>{business.hours}</li>
+        <li>{business.location}</li>
+      </ul>
+    </div>
+
+    <div class="footer__block">
+      <h2 class="footer__heading">Site</h2>
+      <ul class="footer__list">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#boat-lifts">Boat Lifts</a></li>
+        <li><a href="#contact">Request an Estimate</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer__bottom">
+    <p>&copy; {year} {business.name}. All rights reserved.</p>
+    <a class="footer__admin" href="/admin/" rel="nofollow">Staff Login</a>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--color-primary);
+    color: var(--color-accent-subtle);
+    padding-top: clamp(2.5rem, 5vw, 4rem);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .footer__inner {
+    display: grid;
+    grid-template-columns: 1.5fr repeat(3, 1fr);
+    gap: 2rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .footer__name {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--color-white);
+    margin-bottom: 0.5rem;
+  }
+
+  .footer__tagline {
+    font-size: 0.9rem;
+    max-width: 34ch;
+    margin: 0;
+  }
+
+  .footer__heading {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-white);
+    margin-bottom: 0.85rem;
+  }
+
+  .footer__list {
+    display: grid;
+    gap: 0.5rem;
+    font-size: 0.92rem;
+  }
+
+  .footer__list a {
+    color: var(--color-accent-subtle);
+  }
+
+  .footer__list a:hover {
+    color: var(--color-white);
+  }
+
+  .footer__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-block: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 0.82rem;
+  }
+
+  .footer__bottom p {
+    margin: 0;
+  }
+
+  .footer__admin {
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  .footer__admin:hover {
+    color: var(--color-white);
+  }
+
+  @media (max-width: 860px) {
+    .footer__inner {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 520px) {
+    .footer__inner {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
