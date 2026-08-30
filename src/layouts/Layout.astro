@@ -1,5 +1,5 @@
 ---
-import { business, fullAddress, site } from "../data/content";
+import { business, fullAddress, services, site } from "../data/content";
 import "../styles/global.css";
 
 interface Props {
@@ -12,13 +12,16 @@ const { title, description, ogImage } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImage = new URL(ogImage ?? site.socialImage, Astro.site);
+const serviceItems = services;
 
 const schema = {
   "@context": "https://schema.org",
   "@type": "HomeAndConstructionBusiness",
+  "@id": `${Astro.site}#business`,
   name: business.name,
   description: site.structuredDataDescription,
   url: Astro.site?.href,
+  image: socialImage.href,
   telephone: business.phone,
   email: business.email,
   address: {
@@ -30,8 +33,32 @@ const schema = {
     addressCountry: "US",
   },
   areaServed: business.location,
+  knowsAbout: serviceItems.map(({ title }) => title),
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: `${business.name} services`,
+    itemListElement: serviceItems.map(({ title, description }) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: title,
+        description,
+        provider: { "@id": `${Astro.site}#business` },
+        areaServed: business.location,
+      },
+    })),
+  },
   openingHours: "Mo-Fr 07:30-15:30",
   priceRange: "$$",
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${Astro.site}#website`,
+  name: business.name,
+  url: Astro.site?.href,
+  publisher: { "@id": `${Astro.site}#business` },
 };
 ---
 
@@ -46,6 +73,7 @@ const schema = {
 
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={business.name} />
@@ -72,6 +100,11 @@ const schema = {
     <script
       type="application/ld+json"
       set:html={JSON.stringify(schema)}
+      is:inline
+    />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(websiteSchema)}
       is:inline
     />
 
