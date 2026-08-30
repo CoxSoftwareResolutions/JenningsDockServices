@@ -64,11 +64,12 @@ The CMS is configured in [public/admin/config.yml](public/admin/config.yml) and 
 
 ### Deploying the CMS
 
-The current configuration uses Netlify Git Gateway:
+The current configuration uses GitHub to authenticate CMS users:
 
 ```yaml
 backend:
-  name: git-gateway
+  name: github
+  repo: CoxSoftwareResolutions/JenningsDockServices
   branch: main
 ```
 
