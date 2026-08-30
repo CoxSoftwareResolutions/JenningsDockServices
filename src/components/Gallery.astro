@@ -12,28 +12,53 @@ import { gallery, site } from "../data/content";
 
     {
       gallery.length > 0 ? (
-        <ul class="gallery-grid" data-gallery>
-          {gallery.map((item, index) => (
-            <li class="gallery-item">
+        <>
+          <ul class="gallery-grid" data-gallery>
+            {gallery.map((item, index) => (
+              <li class="gallery-item">
+                <button
+                  class="gallery-item__button"
+                  type="button"
+                  data-lightbox-trigger
+                  data-index={index}
+                  data-src={item.image}
+                  data-caption={item.caption}
+                >
+                  <img
+                    src={item.image}
+                    alt={item.caption}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="gallery-item__caption">{item.caption}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+          {gallery.length > 1 && (
+            <div class="gallery-controls" data-gallery-controls>
               <button
-                class="gallery-item__button"
+                class="gallery-control"
                 type="button"
-                data-lightbox-trigger
-                data-index={index}
-                data-src={item.image}
-                data-caption={item.caption}
+                data-gallery-prev
+                aria-label="Show previous gallery image"
               >
-                <img
-                  src={item.image}
-                  alt={item.caption}
-                  loading="lazy"
-                  decoding="async"
-                />
-                <span class="gallery-item__caption">{item.caption}</span>
+                &#8249;
               </button>
-            </li>
-          ))}
-        </ul>
+              <p class="gallery-position" aria-live="polite">
+                <span data-gallery-current>1</span> / {gallery.length}
+              </p>
+              <button
+                class="gallery-control"
+                type="button"
+                data-gallery-next
+                aria-label="Show next gallery image"
+              >
+                &#8250;
+              </button>
+            </div>
+          )}
+        </>
       ) : (
         <p class="gallery-empty">{site.galleryEmpty}</p>
       )
@@ -133,6 +158,10 @@ import { gallery, site } from "../data/content";
     font-size: 1.05rem;
   }
 
+  .gallery-controls {
+    display: none;
+  }
+
   .lightbox {
     position: fixed;
     inset: 0;
@@ -204,6 +233,60 @@ import { gallery, site } from "../data/content";
   }
 
   @media (max-width: 640px) {
+    .gallery-grid {
+      display: flex;
+      gap: 0.75rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      overscroll-behavior-inline: contain;
+    }
+
+    .gallery-grid::-webkit-scrollbar {
+      display: none;
+    }
+
+    .gallery-item {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+
+    .gallery-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .gallery-control {
+      width: 2.75rem;
+      height: 2.75rem;
+      border: 1px solid var(--color-accent-subtle);
+      border-radius: var(--radius);
+      background-color: var(--color-white);
+      color: var(--color-primary);
+      font: inherit;
+      font-size: 1.75rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .gallery-control:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+
+    .gallery-position {
+      min-width: 3.5rem;
+      margin: 0;
+      color: var(--color-secondary);
+      text-align: center;
+      font-size: 0.9rem;
+      font-variant-numeric: tabular-nums;
+    }
+
     .lightbox__nav {
       position: absolute;
       bottom: 1.25rem;
@@ -220,6 +303,63 @@ import { gallery, site } from "../data/content";
 </style>
 
 <script>
+  const galleryTrack = document.querySelector<HTMLElement>("[data-gallery]");
+  const galleryControls = document.querySelector<HTMLElement>(
+    "[data-gallery-controls]",
+  );
+
+  if (galleryTrack && galleryControls) {
+    const slides = Array.from(
+      galleryTrack.querySelectorAll<HTMLElement>(".gallery-item"),
+    );
+    const current = galleryControls.querySelector<HTMLElement>(
+      "[data-gallery-current]",
+    )!;
+    const previous = galleryControls.querySelector<HTMLButtonElement>(
+      "[data-gallery-prev]",
+    )!;
+    const next = galleryControls.querySelector<HTMLButtonElement>(
+      "[data-gallery-next]",
+    )!;
+    let activeIndex = 0;
+    let scrollFrame = 0;
+
+    const updateControls = (index: number) => {
+      activeIndex = Math.max(0, Math.min(index, slides.length - 1));
+      current.textContent = String(activeIndex + 1);
+      previous.disabled = activeIndex === 0;
+      next.disabled = activeIndex === slides.length - 1;
+    };
+
+    const goToSlide = (index: number) => {
+      slides[index]?.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "start",
+      });
+      updateControls(index);
+    };
+
+    previous.addEventListener("click", () => goToSlide(activeIndex - 1));
+    next.addEventListener("click", () => goToSlide(activeIndex + 1));
+    galleryTrack.addEventListener("scroll", () => {
+      window.cancelAnimationFrame(scrollFrame);
+      scrollFrame = window.requestAnimationFrame(() => {
+        const index = slides.reduce(
+          (closest, slide, slideIndex) =>
+            Math.abs(slide.offsetLeft - galleryTrack.scrollLeft) <
+            Math.abs(slides[closest].offsetLeft - galleryTrack.scrollLeft)
+              ? slideIndex
+              : closest,
+          0,
+        );
+        updateControls(index);
+      });
+    });
+
+    updateControls(0);
+  }
+
   const lightbox = document.querySelector<HTMLElement>("[data-lightbox]");
   const triggers = Array.from(
     document.querySelectorAll<HTMLButtonElement>("[data-lightbox-trigger]"),
