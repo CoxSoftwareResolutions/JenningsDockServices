@@ -1,53 +1,68 @@
 {
   "site": {
-    "pageTitleSuffix": "Boat Docks, Lifts & Marine Repair",
-    "pageDescription": "Family-owned dock and boat lift specialists with 25+ years of experience. Galvanized steel docks, lift installation and repair, wood and steel dock repair, anchor and cable work, and scuba recovery.",
+    "thanksEyebrow": "Request Received",
+    "addressLabel": "Shop Address",
+    "structuredDataDescription": "Galvanized steel boat docks, boat lifts and lift repair, wood and steel dock repair, scuba diving, anchor and cable work.",
+    "boatLiftsEyebrow": "Boat Lifts",
+    "thanksSubtitle": "An employee will follow up during business hours. If it is urgent, give us a call directly.",
+    "callButtonPrefix": "Call",
+    "standardFrameLabel": "Standard Frame",
+    "footerHoursTitle": "Hours & Area",
+    "hoursLabel": "Hours",
+    "liftCta": "Inquire About This Model",
+    "galleryTitle": "Project Gallery",
+    "backHome": "Back to Home",
+    "footerBoatLiftsLink": "Boat Lifts",
+    "waterDepthLabel": "Min Water Depth",
+    "staffLogin": "Staff Login",
+    "contactEyebrow": "Get Started",
+    "gallerySubtitle": "A look at recent dock builds, lift installations, and waterfront repairs.",
+    "servicesEyebrow": "What We Do",
+    "pageDescription": "Family-owned dock and boat lift specialists with 25+ years of experience. Galvanized steel docks, lift installation, repair and modification, wood and steel dock repair, anchor and cable work, and scuba recovery.",
+    "emailButton": "Email Us",
     "socialImage": "/uploads/shop_front.webp",
+    "boatLengthLabel": "Boat Length",
+    "thanksTitle": "Thanks - we got your message.",
+    "heroEyebrow": "Family Owned - 25+ Years on the Water",
     "brandName": "Jennings",
+    "serviceAreaLabel": "Service Area",
+    "footerTagline": "Galvanized steel docks, boat lifts, repairs, and scuba services. Family owned for 25+ years.",
+    "footerServicesLink": "Services",
+    "footerContactTitle": "Contact",
+    "navLinks": [
+      {
+        "label": "About",
+        "href": "#about"
+      },
+      {
+        "label": "Services",
+        "href": "#services"
+      },
+      {
+        "label": "Gallery",
+        "href": "#gallery"
+      },
+      {
+        "label": "Boat Lifts",
+        "href": "#boat-lifts"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      }
+    ],
+    "servicesSubtitle": "From new galvanized steel builds to underwater recovery, we handle every part of keeping your dock safe and functional.",
+    "footerSiteTitle": "Site",
+    "galleryEyebrow": "Our Work",
+    "contactSubtitle": "Tell us about your dock or lift and we will schedule a visit, assess the work, and give you a straightforward estimate.",
+    "contactTitle": "Ready for a Free On-Site Evaluation?",
     "brandSub": "Dock Services",
     "headerCtaShort": "Call Now",
-    "navLinks": [
-      { "label": "About", "href": "#about" },
-      { "label": "Services", "href": "#services" },
-      { "label": "Gallery", "href": "#gallery" },
-      { "label": "Boat Lifts", "href": "#boat-lifts" },
-      { "label": "Contact", "href": "#contact" }
-    ],
-    "aboutEyebrow": "About Us",
-    "heroEyebrow": "Family Owned - 25+ Years on the Water",
-    "servicesEyebrow": "What We Do",
     "servicesTitle": "Complete Waterfront Services",
-    "servicesSubtitle": "From new galvanized steel builds to underwater recovery, we handle every part of keeping your dock safe and functional.",
-    "galleryEyebrow": "Our Work",
-    "galleryTitle": "Project Gallery",
-    "gallerySubtitle": "A look at recent dock builds, lift installations, and waterfront repairs.",
+    "pageTitleSuffix": "Boat Docks, Lifts & Marine Repair",
     "galleryEmpty": "Project photos are coming soon. Call us and we will gladly share recent work.",
-    "boatLiftsEyebrow": "Boat Lifts",
-    "boatLengthLabel": "Boat Length",
-    "waterDepthLabel": "Min Water Depth",
-    "standardFrameLabel": "Standard Frame",
-    "liftCta": "Inquire About This Model",
-    "contactEyebrow": "Get Started",
-    "contactTitle": "Ready for a Free On-Site Evaluation?",
-    "contactSubtitle": "Tell us about your dock or lift and we will schedule a visit, assess the work, and give you a straightforward estimate.",
-    "callButtonPrefix": "Call",
-    "emailButton": "Email Us",
-    "hoursLabel": "Hours",
-    "serviceAreaLabel": "Service Area",
-    "addressLabel": "Shop Address",
-    "footerTagline": "Galvanized steel docks, boat lifts, repairs, and scuba services. Family owned for 25+ years.",
-    "footerContactTitle": "Contact",
-    "footerHoursTitle": "Hours & Area",
-    "footerSiteTitle": "Site",
-    "footerServicesLink": "Services",
-    "footerBoatLiftsLink": "Boat Lifts",
-    "footerContactLink": "Request an Estimate",
-    "staffLogin": "Staff Login",
-    "structuredDataDescription": "Galvanized steel boat docks, boat lifts and lift repair, wood and steel dock repair, scuba diving, anchor and cable work.",
-    "thanksEyebrow": "Request Received",
-    "thanksTitle": "Thanks - we got your message.",
-    "thanksSubtitle": "An employee will follow up during business hours. If it is urgent, give us a call directly.",
-    "backHome": "Back to Home"
+    "aboutEyebrow": "About Us",
+    "footerContactLink": "Request an Estimate"
   },
   "business": {
     "name": "Jennings Dock Services",
@@ -73,9 +88,18 @@
     "title": "Built for Safety, Longevity, and Peace of Mind",
     "paragraph": "Jennings Dock Services specializes in galvanized steel boat docks, professional boat lifts and lift repair, wood and steel dock repair, scuba diving, anchor & cable work. As a family-owned business with 25+ years of experience, we focus on durable, high-quality work that guarantees safety and longevity for your waterfront assets. Trust us for expert service in marine and dock projects.",
     "stats": [
-      { "value": "25+", "label": "Years Experience" },
-      { "value": "100%", "label": "Family Owned" },
-      { "value": "Steel & Wood", "label": "Custom Builds & Repairs" }
+      {
+        "value": "25+",
+        "label": "Years Experience"
+      },
+      {
+        "value": "100%",
+        "label": "Family Owned"
+      },
+      {
+        "value": "Steel & Wood",
+        "label": "Custom Builds & Repairs"
+      }
     ]
   },
   "services": [
